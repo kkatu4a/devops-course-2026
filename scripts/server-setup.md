@@ -37,3 +37,10 @@
 - `01-clean-install` — чистая установка Ubuntu Server.
 - `02-keys-configured` — настроена ключевая аутентификация.
 - `03-ssh-hardened` — усилена защита SSH.
+
+## 8. Веб-сервер
+- Установлен пакет `nginx`.
+- Каталог ресурса: `/var/www/devops-site`, владелец `devops:devops`, права `755`.
+- Сертификат: `/etc/ssl/certs/devops.crt` (права 644).
+- Ключ: `/etc/ssl/private/devops.key` (права 600, владелец root).
+- Команда формирования сертификата: `openssl req -x509 -nodes -days 365 -newkey rsa:2048 ...` (срок действия 1 год).
