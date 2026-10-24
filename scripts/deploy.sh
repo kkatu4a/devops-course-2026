@@ -35,10 +35,10 @@ if [ "$DRY_RUN" -eq 1 ]; then
 fi
 
 echo "=== Синхронизация файлов (scp) ==="
-scp -r "${LOCAL_DIR}"* "${REMOTE}:${REMOTE_DIR}/"
+scp -P 2222 -i "$HOME/.ssh/devops_vm" -r "${LOCAL_DIR}"* devops@127.0.0.1:${REMOTE_DIR}/
 
 echo "=== Установка прав ==="
-ssh "${REMOTE}" "sudo chmod 755 ${REMOTE_DIR} && sudo chmod 644 ${REMOTE_DIR}/*"
+ssh -p 2222 -i "$HOME/.ssh/devops_vm" devops@127.0.0.1 "sudo chmod 755 ${REMOTE_DIR} && sudo chmod 644 ${REMOTE_DIR}/*"
 
 echo "=== Проверка доступности сайта ==="
 if curl.exe --cacert "${CA_CERT}" -f -s -o /dev/null "${SITE_URL}"; then
