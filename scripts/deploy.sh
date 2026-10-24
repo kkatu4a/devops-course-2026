@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-REMOTE="devops"
+REMOTE="devops@127.0.0.1"
+SSH_PORT="2222"
+SSH_KEY="~/.ssh/devops_vm"
 REMOTE_DIR="/var/www/devops-site"
 SITE_URL="https://devops.local"
 CA_CERT="${HOME}/devops.crt"
